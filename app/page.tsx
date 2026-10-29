@@ -1,4 +1,5 @@
 import QuoteForm from "./components/QuoteForm";
+import ReviewCarousel, { type Review } from "./components/ReviewCarousel";
 
 const PHONE = "03 9000 0000";
 const PHONE_HREF = "tel:0390000000";
@@ -20,8 +21,8 @@ const heroPoints = [
 ];
 
 const stats = [
-  { value: "12 yrs", label: "maintaining Melbourne gardens" },
-  { value: "380+", label: "regular maintenance clients" },
+  { value: "12 yrs", label: "maintaining gardens in Melbourne's east" },
+  { value: "380+", label: "regular clients across 16 suburbs" },
   { value: "24 hr", label: "quote turnaround" },
   { value: "4.9 / 5", label: "average customer rating" },
 ];
@@ -31,15 +32,15 @@ const services = [
     title: "Lawn mowing & edging",
     img: "https://images.pexels.com/photos/6728926/pexels-photo-6728926.jpeg?auto=compress&cs=tinysrgb&w=900",
     alt: "Gardener mowing a lawn with a push mower",
-    text: "Clean, striped lawns with crisp edges along paths, driveways and garden beds.",
-    items: ["Mowing, edging and whipper-snipping", "Clippings blown off hard surfaces", "Seasonal fertilising and weed spraying"],
+    text: "Clean, striped couch, kikuyu and buffalo lawns with crisp edges, cut to suit Melbourne's seasons.",
+    items: ["Mowing, edging and whipper-snipping", "Clippings blown off hard surfaces", "Spring and autumn feeding, plus bindii and clover control"],
     price: "From $55 per visit",
   },
   {
     title: "Garden maintenance",
     img: "https://images.unsplash.com/photo-1724556295135-ff92b9aa0a55?auto=format&fit=crop&w=900&q=75",
     alt: "Gardener in a hat and gloves weeding a lawn",
-    text: "Regular visits that keep beds weeded, mulched and healthy all year round.",
+    text: "Regular visits that keep beds weeded, mulched and healthy through Melbourne's hot summers and wet winters.",
     items: ["Weeding and bed clean-ups", "Mulching and soil conditioning", "Leaf and green waste removal"],
     price: "From $65 per hour",
   },
@@ -47,7 +48,7 @@ const services = [
     title: "Hedging & pruning",
     img: "https://images.unsplash.com/photo-1763909129689-0ef3655fc03c?auto=format&fit=crop&w=900&q=75",
     alt: "Neatly clipped hedges beside a brick garden path",
-    text: "Sharp, even hedges and shrubs pruned at the right time of year for their species.",
+    text: "Sharp, even hedges and shrubs, timed around the spring growth flush in the eastern suburbs.",
     items: ["Hedge shaping and height reduction", "Shrub and small tree pruning", "All cuttings taken away"],
     price: "From $90 per job",
   },
@@ -55,15 +56,15 @@ const services = [
     title: "Planting & garden beds",
     img: "https://images.pexels.com/photos/27176773/pexels-photo-27176773/free-photo-of-woman-planting-flowers-in-garden.jpeg?auto=compress&cs=tinysrgb&w=900",
     alt: "Gardener planting flowers in a garden bed",
-    text: "New beds designed for your soil, sun and water, with natives that thrive in Melbourne.",
-    items: ["Bed design and soil preparation", "Native and drought-tolerant plants", "Edging, mulch and drip lines"],
+    text: "New beds designed for the eastern suburbs' heavy clay soils, with natives suited to Melbourne's climate.",
+    items: ["Bed design and soil preparation", "Local natives: grevilleas, correas, lomandras", "Edging, mulch and drip lines"],
     price: "From $65 per m²",
   },
   {
     title: "Landscaping & paving",
     img: "https://images.unsplash.com/photo-1761637822930-fb1c1a3df94d?auto=format&fit=crop&w=900&q=75",
     alt: "Modern garden with a stone retaining wall, paved path and hedges",
-    text: "Paths, patios and retaining walls built to last, from a single step to a full backyard.",
+    text: "Paths, patios and retaining walls built to last on Melbourne's reactive clay, from a single step to a full backyard.",
     items: ["Bluestone, sandstone and pavers", "Sleeper and block retaining walls", "Turf laying and levelling"],
     price: "From $120 per m²",
   },
@@ -71,8 +72,8 @@ const services = [
     title: "Large blocks & commercial",
     img: "https://images.unsplash.com/photo-1629335493470-f22db7852d39?auto=format&fit=crop&w=900&q=75",
     alt: "Ride-on mower on a large green lawn",
-    text: "Ride-on mowing and grounds care for acreage, body corporates, schools and offices.",
-    items: ["Ride-on and slasher mowing", "Fire hazard reductions", "Scheduled body corporate visits"],
+    text: "Ride-on mowing and grounds care for acreage in Warrandyte and the Yarra Valley fringe, plus body corporates, schools and offices.",
+    items: ["Ride-on and slasher mowing", "Council fire hazard clearances before summer", "Scheduled body corporate visits"],
     price: "Quoted per site",
   },
 ];
@@ -128,7 +129,7 @@ const gallery = [
   { src: "https://images.unsplash.com/photo-1763909129689-0ef3655fc03c?auto=format&fit=crop&w=1200&q=75", alt: "Brick path through clipped hedges", caption: "Hedge maintenance, Box Hill" },
 ];
 
-const reviews = [
+const reviews: Review[] = [
   {
     quote: "Same two guys every second Tuesday, and the photo they send afterwards means I don't even need to check. The edges have never looked this good.",
     initials: "SM",
@@ -136,7 +137,7 @@ const reviews = [
     detail: "Full Garden plan · Mitcham",
   },
   {
-    quote: "We manage 40 rentals in the area and the monthly reports make our routine inspections far easier. Invoices come straight to the office.",
+    quote: "We manage 40 rentals across the eastern suburbs and the monthly reports make our routine inspections far easier. Invoices come straight to the office.",
     initials: "PM",
     name: "Sample property manager",
     detail: "Property Manager plan · Ringwood",
@@ -147,6 +148,24 @@ const reviews = [
     name: "Sample customer",
     detail: "Landscaping · Croydon North",
   },
+  {
+    quote: "Our photinia hedge had got away from us. They brought it back to a clean line in one visit and now trim it every quarter before it gets out of hand.",
+    initials: "KL",
+    name: "Sample customer",
+    detail: "Hedging & pruning · Blackburn",
+  },
+  {
+    quote: "We needed the garden ready for an auction campaign with a week's notice. Mulched, edged and weeded in a day, and the agent noticed straight away.",
+    initials: "RD",
+    name: "Sample customer",
+    detail: "One-off clean-up · Wantirna",
+  },
+  {
+    quote: "Our lawn struggled every summer. After a season of proper feeding and a higher cut it stayed green right through February.",
+    initials: "AN",
+    name: "Sample customer",
+    detail: "Lawn Care plan · Doncaster East",
+  },
 ];
 
 const suburbs = [
@@ -155,12 +174,14 @@ const suburbs = [
 ];
 
 const faqs = [
+  { q: "Which Melbourne suburbs do you service?", a: "We cover Melbourne's eastern suburbs within about 25 km of our Ringwood base, including Croydon, Mitcham, Box Hill, Blackburn, Doncaster East, Wantirna, Boronia, Warrandyte and Lilydale. Send us your suburb if you're not sure." },
   { q: "Do I need to be home when you visit?", a: "No. Most clients leave side gates unlocked or give us a code. We'll send a photo of the finished garden and a message when we've left." },
   { q: "Do you take the green waste away?", a: "Yes. All clippings, prunings and weeds are removed at the end of every visit and taken to a green waste recycler. It's included in our plan prices." },
   { q: "What happens if it rains on my visit day?", a: "We'll text you the evening before or that morning and move your visit to the next dry day, usually within 48 hours." },
   { q: "Am I locked into a contract?", a: "No. Maintenance plans run visit to visit. You can pause over holidays or cancel with one week's notice." },
   { q: "Are you insured?", a: "Yes. We carry $20 million public liability insurance and all staff are covered by WorkCover. Certificates are available on request." },
   { q: "Can you work with my real estate agent or body corporate?", a: "Yes. Our Property Manager plan sends invoices and photo reports directly to agents, owners or strata managers." },
+  { q: "When is the best time to plant natives in Melbourne?", a: "Autumn is ideal. The soil is still warm and winter rain helps roots establish before summer. Spring planting works too, with drip irrigation to get plants through their first hot months." },
   { q: "How do I pay?", a: "We invoice after each visit or monthly. You can pay by bank transfer or card, or set up automatic payments." },
 ];
 
@@ -174,21 +195,42 @@ function Logo({ size }: { size?: number }) {
   );
 }
 
-function Stars() {
-  return (
-    <div className="stars" aria-label="5 out of 5 stars">
-      {Array.from({ length: 5 }, (_, i) => (
-        <svg key={i} viewBox="0 0 24 24" fill="#c98a2b">
-          <path d="M12 2l3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  name: "Gumleaf Landscapes",
+  description:
+    "Lawn mowing, garden maintenance, hedging, planting and landscaping across Melbourne's eastern suburbs.",
+  telephone: "+61 3 9000 0000",
+  email: EMAIL,
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Ringwood",
+    addressRegion: "VIC",
+    postalCode: "3134",
+    addressCountry: "AU",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: -37.8136, longitude: 145.229 },
+  areaServed: suburbs.map((suburb) => ({ "@type": "Place", name: `${suburb} VIC` })),
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "07:00",
+      closes: "16:30",
+    },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "08:00", closes: "12:00" },
+  ],
+};
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness).replace(/</g, "\\u003c") }}
+      />
       <div className="topbar">
         <div className="wrap">
           <span className="hours">Mon – Fri 7:00am – 4:30pm · Sat 8:00am – 12:00pm</span>
@@ -229,14 +271,15 @@ export default function Home() {
           </div>
           <div className="hero-inner">
             <span className="eyebrow" style={{ color: "var(--gold)" }}>
-              Lawn care · Garden maintenance · Landscaping
+              Melbourne lawn care · Garden maintenance · Landscaping
             </span>
             <h1>
               A tidy garden, <em>every fortnight</em>, without lifting a finger.
             </h1>
             <p className="lede">
               Gumleaf Landscapes looks after homes, rentals and body corporate grounds across Melbourne&apos;s eastern
-              suburbs. Mowing, hedging, weeding, planting and garden makeovers, all handled by one reliable local crew.
+              suburbs, from Ringwood and Croydon to Box Hill and Doncaster East. Mowing, hedging, weeding, planting and
+              garden makeovers, all handled by one reliable local crew.
             </p>
             <div className="hero-actions">
               <a className="btn btn-primary" href="#contact">
@@ -279,10 +322,10 @@ export default function Home() {
           <div className="wrap">
             <div className="section-head">
               <span className="eyebrow">Our services</span>
-              <h2>Everything your garden needs, from a quick mow to a full makeover.</h2>
+              <h2>Garden services across Melbourne&apos;s east, from a quick mow to a full makeover.</h2>
               <p>
-                Book a one-off tidy-up before an inspection or sale, or set up a regular visit and stop thinking about
-                the garden altogether.
+                Book a one-off tidy-up before a rental inspection or auction, or set up a regular visit and stop
+                thinking about the garden altogether. Every service is priced for Melbourne suburban blocks.
               </p>
             </div>
             <div className="services">
@@ -318,7 +361,7 @@ export default function Home() {
               ))}
             </div>
             <div className="about-copy">
-              <span className="eyebrow">Why Gumleaf</span>
+              <span className="eyebrow">Why Melbourne chooses Gumleaf</span>
               <h2>The same crew, the same day, every visit.</h2>
               <p>
                 Most garden services send whoever is free that week. We give every client a regular crew and a fixed
@@ -327,7 +370,9 @@ export default function Home() {
               </p>
               <p>
                 We started in Ringwood in 2014 with one ute and a mower. Today our crews look after more than 380
-                properties, and most of our new clients come from neighbours who saw the work over the fence.
+                properties across Melbourne&apos;s eastern suburbs, and most of our new clients come from neighbours who
+                saw the work over the fence. We know the local clay soils, the council green waste rules and which
+                plants handle a 40-degree January.
               </p>
               <ul className="checks">
                 {aboutChecks.map((check) => (
@@ -373,7 +418,7 @@ export default function Home() {
             <div className="section-head">
               <span className="eyebrow">Maintenance plans</span>
               <h2>Pick a plan and forget about the garden.</h2>
-              <p>Prices below are for a typical suburban block up to 650 m². Larger blocks are quoted after a site visit.</p>
+              <p>Prices below are for a typical Melbourne suburban block up to 650 m². Larger blocks are quoted after a site visit.</p>
             </div>
             <div className="plans">
               {plans.map((plan) => (
@@ -405,7 +450,7 @@ export default function Home() {
             <div className="section-head">
               <span className="eyebrow">Our work</span>
               <h2>Gardens we look after.</h2>
-              <p>A few examples of the mowing, maintenance and landscaping work our crews do every week.</p>
+              <p>A few examples of the mowing, maintenance and landscaping work our crews do every week across Melbourne&apos;s east.</p>
             </div>
             <div className="gallery">
               {gallery.map((item) => (
@@ -429,10 +474,10 @@ export default function Home() {
           </div>
           <div className="wrap">
             <div>
-              <h2>Selling, leasing or just sick of the weeds?</h2>
+              <h2>Selling, leasing or just sick of the weeds in Melbourne&apos;s east?</h2>
               <p>
-                Book a one-off garden clean-up and we&apos;ll have it looking its best within the week. Free quotes, no
-                obligation.
+                Book a one-off garden clean-up before your auction or rental inspection and we&apos;ll have it looking
+                its best within the week. Free quotes, no obligation.
               </p>
             </div>
             <div className="cta-actions">
@@ -451,26 +496,12 @@ export default function Home() {
           <div className="wrap">
             <div className="section-head">
               <span className="eyebrow">Reviews</span>
-              <h2>What customers say.</h2>
+              <h2>What customers across Melbourne&apos;s east say.</h2>
               <span className="sample-note">
                 Sample reviews for this demo site. A live site would pull in real Google reviews here.
               </span>
             </div>
-            <div className="reviews">
-              {reviews.map((review) => (
-                <article className="review" key={review.detail}>
-                  <Stars />
-                  <blockquote>{review.quote}</blockquote>
-                  <footer>
-                    <div className="avatar">{review.initials}</div>
-                    <div>
-                      <strong>{review.name}</strong>
-                      <span>{review.detail}</span>
-                    </div>
-                  </footer>
-                </article>
-              ))}
-            </div>
+            <ReviewCarousel reviews={reviews} />
           </div>
         </section>
 
@@ -479,10 +510,10 @@ export default function Home() {
           <div className="wrap area">
             <div className="area-copy">
               <span className="eyebrow">Service area</span>
-              <h2>Based in Ringwood, working across the east.</h2>
+              <h2>Based in Ringwood, working across Melbourne&apos;s east.</h2>
               <p>
-                Our crews cover suburbs within about 25 km of Ringwood. Site visits and quotes are free anywhere in this
-                area. Not sure if you&apos;re covered? Send us your suburb and we&apos;ll let you know the same day.
+                Our crews cover Melbourne&apos;s eastern suburbs within about 25 km of Ringwood, from Box Hill and
+                Doncaster East out to Lilydale and Warrandyte. Site visits and quotes are free anywhere in this area. Not sure if you&apos;re covered? Send us your suburb and we&apos;ll let you know the same day.
               </p>
               <ul className="suburbs">
                 {suburbs.map((suburb) => (
@@ -525,7 +556,7 @@ export default function Home() {
           <div className="wrap contact-grid">
             <div className="contact-info">
               <span className="eyebrow">Contact us</span>
-              <h2>Get your free quote.</h2>
+              <h2>Get your free Melbourne garden quote.</h2>
               <p>Tell us a little about your garden and we&apos;ll reply within one business day to book a free site visit.</p>
               <ul className="contact-list">
                 <li>
@@ -563,7 +594,7 @@ export default function Home() {
                 <Logo size={34} />
                 Gumleaf Landscapes
               </a>
-              <p>Lawn care, garden maintenance and landscaping for Melbourne&apos;s eastern suburbs.</p>
+              <p>Lawn mowing, garden maintenance and landscaping for Melbourne&apos;s eastern suburbs, based in Ringwood VIC.</p>
             </div>
             <div>
               <h3>Services</h3>
